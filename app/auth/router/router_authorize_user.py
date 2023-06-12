@@ -1,7 +1,6 @@
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
-
-from app.utils import AppModel
+from pydantic import BaseModel
 
 from ..service import Service, get_service
 from ..utils.security import check_password
@@ -9,7 +8,7 @@ from . import router
 from .errors import InvalidCredentialsException
 
 
-class AuthorizeUserResponse(AppModel):
+class AuthorizeUserResponse(BaseModel):
     access_token: str
     token_type: str = "Bearer"
 
